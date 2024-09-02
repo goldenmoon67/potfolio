@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of a Software Developer">
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">DevPortfolio</div>
+        <ul>
+            <li><a href="#hero">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="social-icons-nav">
+            <a href="https://github.com/username" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/username" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://medium.com/@username" target="_blank" class="social-icon"><i class="fab fa-medium"></i></a>
+            <a href="https://stackoverflow.com/users/username" target="_blank" class="social-icon"><i class="fab fa-stack-overflow"></i></a>
+            <a href="https://instagram.com/username" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/yourphonenumber" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </nav>
+</header>
+
+<section id="hero">
+    <div class="hero-content">
+        <h1 class="fade-in">Hi, I'm Mirac Altınay</h1>
+        <p class="scrolling-text">Software Engineer</p>
+        <a href="#projects" class="btn">View My Work</a>
+        <div id="about" class="hero-about">
+           
+            <p>I'm a passionate software developer with a strong background in full-stack development. I love building scalable and efficient applications with modern technologies.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="experience">
+    <h2 class="experience-title">Work Experience</h2>
+    <p class="experience-subtitle">A brief overview of my professional journey</p>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date">
+                <span>2020 - Present</span>
+            </div>
+            <div class="timeline-content">
+                <h3>Senior Software Engineer</h3>
+                <h4>TechCorp, New York</h4>
+                <p>Leading the development of web applications and backend services using modern technologies like React, Node.js, and AWS.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">
+                <span>2018 - 2020</span>
+            </div>
+            <div class="timeline-content">
+                <h3>Full Stack Developer</h3>
+                <h4>InnovateTech, San Francisco</h4>
+                <p>Worked on various full stack projects, integrating RESTful APIs and developing scalable web applications using Python and JavaScript.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">
+                <span>2016 - 2018</span>
+            </div>
+            <div class="timeline-content">
+                <h3>Junior Developer</h3>
+                <h4>CodeWorks, Chicago</h4>
+                <p>Assisted in the development of client-side applications and collaborated with senior developers to enhance system performance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+        <div class="project-item">
+            <img src="images/project1.jpg" alt="Project 1">
+            <h3>Project 1</h3>
+            <p>A web application built with React and Node.js</p>
+        </div>
+        <div class="project-item">
+            <img src="images/project2.jpg" alt="Project 2">
+            <h3>Project 2</h3>
+            <p>A mobile app built with Flutter</p>
+        </div>
+        <div class="project-item">
+            <img src="images/project3.jpg" alt="Project 3">
+            <h3>Project 3</h3>
+            <p>An API built with Python and Django</p>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <h2 class="skills-title">My Skills</h2>
+    <p class="skills-subtitle">Technologies I've worked with</p>
+    
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon">
+                <img src="images/python-icon.png" alt="Python">
+            </div>
+            <h3>Python</h3>
+            <p>Backend Development</p>
+        </div>
+        
+        <div class="skill-card">
+            <div class="skill-icon">
+                <img src="images/javascript-icon.png" alt="JavaScript">
+            </div>
+            <h3>JavaScript</h3>
+            <p>Frontend & Backend Development</p>
+        </div>
+        
+        <div class="skill-card">
+            <div class="skill-icon">
+                <img src="images/react-icon.png" alt="React">
+            </div>
+            <h3>React</h3>
+            <p>Frontend Development</p>
+        </div>
+        
+        <div class="skill-card">
+            <div class="skill-icon">
+                <img src="images/flutter-icon.png" alt="Flutter">
+            </div>
+            <h3>Flutter</h3>
+            <p>Mobile Development</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>If you'd like to get in touch, feel free to reach out via email or connect with me on social media.</p>
+    <div class="contact-info">
+        <p>Email: <a href="mailto:developer@example.com">developer@example.com</a></p>
+        <p>LinkedIn: <a href="#">LinkedIn Profile</a></p>
+        <p>GitHub: <a href="#">GitHub Profile</a></p>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+<footer>
+    <p>&copy; 2024 DevPortfolio. All rights reserved.</p>
+</footer>
+</body>
+</html>
