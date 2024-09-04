@@ -93,6 +93,14 @@ nav .social-icon:hover {
     position: relative;
 }
 
+.hero-content {
+    display: flex;
+    flex-direction: column; /* İçerikleri dikeyde hizala */
+    align-items: center; /* Tüm içerikleri ortala */
+    text-align: center; /* Yazıyı ortala */
+    padding: 20px;
+}
+
 .hero-content h1 {
     font-size: 48px;
     margin-bottom: 20px;
@@ -118,14 +126,6 @@ nav .social-icon:hover {
     transform: scale(1.05);
 }
 
-/* About Me Section in Hero */
-.hero-about {
-    margin-top: 50px; /* Butonun altına boşluk bırak */
-    background-color: transparent; /* Arka planı tamamen şeffaf yap */
-    padding: 20px;
-    max-width: 600px; /* Metin genişliğini sınırlı tut */
-    color: #fff; /* Metin rengini beyaz yap */
-}
 
 .hero-about h2 {
     font-size: 32px;
@@ -342,7 +342,7 @@ footer {
 
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -365,7 +365,7 @@ footer {
 .timeline-content {
     flex: 4;
     background-color: #f4f4f9;
-    padding: 20px;
+    padding: 4px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: left;
@@ -386,7 +386,13 @@ footer {
     color: #555;
     font-size: 16px;
 }
+.timeline-content ul {
+    padding-left: 20px; /* Liste elemanlarını içeri doğru taşır */
+}
 
+.timeline-content ul li {
+    list-style-position: inside; /* Liste işaretlerinin içeride olmasını sağlar */
+}
 .timeline-item:before {
     content: '';
     position: absolute;
@@ -421,4 +427,58 @@ footer {
         margin-right: 0;
         margin-bottom: 10px;
     }
+}
+
+/* Profile Photo Right */
+.profile-photo-right {
+    border-radius: 50%; /* Fotoğrafı yuvarlak yapar */
+    width: 150px; /* Fotoğrafın genişliği */
+    height: 150px; /* Fotoğrafın yüksekliği */
+    object-fit: cover;
+    margin-left: 20px; /* Fotoğraf ile metin arasında boşluk bırakır */
+}
+/* Text Content */
+.text-content {
+    max-width: 600px;
+}
+
+.hero-header {
+    display: flex;
+    flex-direction: row; /* Resim ve metni yatayda hizala */
+    justify-content: center; /* İçerikleri ortala */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo-left {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px; /* Resim ile yazı arasında boşluk bırak */
+}
+@media (max-width: 768px) {
+    .hero-header {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center;
+    }
+
+    .text-content {
+        text-align: center; /* Center the text on smaller screens */
+    }
+
+    .profile-photo-right {
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+}
+
+.hero-about {
+    margin-top: 20px; /* Butonun altına boşluk bırak */
+    max-width: 1000px;
+    text-align: left;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Hafif şeffaf arka plan */
+    border-radius: 10px;
+    color: #fff;
 }
