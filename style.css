@@ -455,7 +455,7 @@ footer {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    margin-right: 20px; /* Resim ile yazı arasında boşluk bırak */
+    margin-right: 180px; /* Resim ile yazı arasında boşluk bırak */
 }
 @media (max-width: 768px) {
     .hero-header {
