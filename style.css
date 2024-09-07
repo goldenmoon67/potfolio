@@ -218,13 +218,14 @@ nav .social-icon:hover {
 
 /* Contact Section */
 #contact {
+    background-color: #111; /* Navbar ile aynı renk */
     padding: 60px 20px;
     text-align: center;
-    background-color: #333;
-    color: #fff;
+    color: #fff; /* Beyaz yazı rengi */
 }
 
 #contact h2 {
+    color: #b3ffb3; /* Navbar'daki logo rengi ile uyumlu */
     margin-bottom: 20px;
     font-size: 32px;
 }
@@ -234,14 +235,14 @@ nav .social-icon:hover {
 }
 
 .contact-info a {
-    color: #ff6347;
+    color: #b3ffb3; /* Navbar ile uyumlu */
     text-decoration: none;
+    font-weight: bold;
 }
 
 .contact-info a:hover {
-    text-decoration: underline;
+    color: #66ff66; /* Hover durumunda yeşil tonuyla uyumlu */
 }
-
 /* Footer */
 footer {
     background-color: #222;
@@ -300,8 +301,11 @@ footer {
 }
 
 .skill-card p {
-    font-size: 16px;
-    color: #555;
+    font-weight: bold;
+    color: #444; /* Change the color */
+    margin-bottom: 10px; /* Add some space between the description and the list */
+    font-size: 18px; /* Adjust the size */
+    line-height: 1.4; /* Improve readability */
 }
 
 .skill-card img {
@@ -526,7 +530,8 @@ footer {
 }
 
 .skill-card li {
-    margin-bottom: 10px; /* Adds space between the list items */
+    margin-bottom: 5px;
+    font-size: 16px;
 }
 
 .project-buttons {
@@ -577,4 +582,53 @@ footer {
 .chip:hover {
     background-color: #ff6347;
     color: #fff;
+}
+
+
+.timeline-date .duration {
+    display: block;
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.duration-bar {
+    position: absolute;
+    left: 50%;
+    width: calc(2 * 5%); /* Calculate based on duration, e.g., 2 years = 40% */
+    height: 10px;
+    background-color: #ff6347;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Different sizes based on durations */
+.short-duration { /* For durations less than 6 months */
+    width: 20%;
+}
+
+.medium-duration { /* For durations between 6 months and 1 year */
+    width: 40%;
+}
+
+.long-duration { /* For durations of 1 year and above */
+    width: 60%;
+}
+
+.social-icons-tab {
+    display: flex;
+    justify-content: center; /* Ortala */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons-tab .social-icon {
+    font-size: 20px;
+    color: #b3ffb3; /* İkonlar da navbar ile uyumlu */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons-tab .social-icon:hover {
+    color: #66ff66; /* İkonların hover durumu */
+    transform: scale(1.1); /* Hover animasyonu */
 }
