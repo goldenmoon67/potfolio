@@ -42,6 +42,7 @@ nav {
 }
 
 nav .social-icons-nav {
+    display: none !important; /* Mobil cihazlarda kesinlikle ikonları gizle */
     display: flex;
     gap: 15px;
     margin-left: auto; /* Sosyal ikonları sağa hizalar */
@@ -652,4 +653,94 @@ footer {
 .social-icons-tab .social-icon:hover {
     color: #66ff66; /* İkonların hover durumu */
     transform: scale(1.1); /* Hover animasyonu */
+}
+/* Mobil cihazlar için hamburger menü */
+.hamburger {
+    margin-left: auto; /* Hamburger menüyü sağa alır */
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Mobilde ana menüyü gizle */
+        flex-direction: column;
+        gap: 15px;
+        background-color: #111;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        z-index: 1000;
+    }
+
+    nav.active ul {
+        display: flex; /* Menü tıklandığında açılır */
+    }
+
+    .hamburger {
+    margin-left: auto; /* Hamburger menüyü sağa alır */
+        display: flex; /* Sadece mobilde hamburger menü görünür */
+    }
+}
+
+/* Genel ekran uyumu */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Sağ-sol kaydırmayı engelle */
+}
+
+/* Mobil cihazlar için */
+@media (max-width: 768px) {
+    .container, nav, .hero-content {
+        width: 100%;
+        padding: 0 15px; /* Kenar boşluklarını azalt */
+        box-sizing: border-box;
+    }
+
+    /* Resim ve içerikleri tam ekrana sığdır */
+    .profile-photo-left, .text-content {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    nav ul {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .social-icons-nav {
+    display: none !important; /* Mobil cihazlarda kesinlikle ikonları gizle */
+        display: none; /* Mobil cihazlarda ikonları gizler */
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        height: 250vh; /* Resmi genişlik yüzde 100 ve yükseklik yüzde 150 olarak ayarlar */
+        background-position: top center; /* Resmi ortalar ve üstten hizalar */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content .btn {
+        display: none; /* Mobilde butonları gizler */
+    }
+}
+@media (max-width: 768px) {
+    .timeline-item:before {
+        display: none; /* Mobilde soldaki çubuğu gizler */
+    }
 }
