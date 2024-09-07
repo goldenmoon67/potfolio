@@ -181,9 +181,9 @@ nav .social-icon:hover {
 
 .project-grid {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-around;
     flex-wrap: wrap;
+    gap: 20px; /* Add space between items */
 }
 
 .project-item {
@@ -191,7 +191,11 @@ nav .social-icon:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 350px; /* Fixed width for all items */
+    display: flex;
+    flex-direction: column; /* Ensure children are stacked vertically */
+    justify-content: space-between; /* Space between the content and the buttons */
+    height: 100%; /* Make all items have equal height */
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -203,6 +207,7 @@ nav .social-icon:hover {
 
 .project-item img {
     max-width: 100%;
+    margin-top: 10px;
     border-radius: 10px;
 }
 
@@ -278,7 +283,7 @@ footer {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     width: 100%;
-    max-width: 200px;
+    max-width: 300px; /* Increase width from 200px to 300px */
     text-align: center;
 }
 
@@ -514,4 +519,62 @@ footer {
     width: 50px; /* Logonun genişliği */
     height: auto; /* Yüksekliği otomatik ayarla */
     object-fit: contain; /* Logonun düzgün görünmesi için */
+}
+
+.skill-card ul {
+    padding-left: 20px; /* Adds padding to the left of the list */
+}
+
+.skill-card li {
+    margin-bottom: 10px; /* Adds space between the list items */
+}
+
+.project-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+.project-buttons .btn-small {
+    background-color: #ff6347;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-buttons .btn-small:hover {
+    background-color: #e5533d;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .project-item {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px; /* Add some spacing between items */
+    }
+}
+
+.chips-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.chip {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.chip:hover {
+    background-color: #ff6347;
+    color: #fff;
 }
