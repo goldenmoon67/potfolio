@@ -616,12 +616,33 @@ footer {
 }
 
 .social-icons-tab {
+    list-style: none; /* Liste işaretlerini kaldırır */
+    padding: 0; /* Gereksiz boşlukları kaldırır */
     display: flex;
-    justify-content: center; /* Ortala */
-    gap: 15px;
-    margin-top: 20px;
+    flex-direction: column; /* Elemanları alt alta dizer */
+    align-items: center; /* Elemanları yatayda ortalar */
+    justify-content: center; /* Elemanları dikeyde ortalar */
 }
 
+.social-icons-tab li {
+    display: flex;
+    align-items: center; /* İkonları ve metni dikeyde ortalar */
+    margin-bottom: 10px; /* İkonlar arasında boşluk bırakır */
+}
+
+.social-icons-tab li i {
+    margin-right: 10px; /* İkon ile platform ismi arasında boşluk bırakır */
+}
+
+.social-icons-tab li a {
+    color: #b3ffb3; /* Yazı rengini ikonlarla uyumlu yapar */
+    text-decoration: none; /* Altı çizili olmadan platform ismini gösterir */
+    font-weight: bold; /* Platform ismini vurgular */
+}
+
+.social-icons-tab li a:hover {
+    color: #66ff66; /* Üzerine gelince renk değişimi */
+}
 .social-icons-tab .social-icon {
     font-size: 20px;
     color: #b3ffb3; /* İkonlar da navbar ile uyumlu */
