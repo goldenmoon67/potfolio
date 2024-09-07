@@ -32,6 +32,10 @@
             <a href="https://instagram.com/altinaymirac" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/+905372372995" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
         </div>
+        <div class="language-switch">
+            <button id="lang-tr" class="lang-btn">TR</button>
+            <button id="lang-en" class="lang-btn">EN</button>
+        </div>
     </nav>
 </header>
 
@@ -59,6 +63,11 @@
             <a href="https://stackoverflow.com/users/18397552/mirac-altinay" target="_blank" class="social-icon"><i class="fab fa-stack-overflow"></i></a>
             <a href="https://instagram.com/altinaymirac" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/+905372372995" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <div class="language-switch">
+            <button id="lang-tr" class="lang-btn">TR</button>
+            <button id="lang-en" class="lang-btn">EN</button>
         </div>
     </nav>
 </header>
@@ -751,8 +760,24 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        if (!userLang) {
+        setLanguage('en'); // Eğer dil bilinmiyorsa varsayılan olarak İngilizce'yi seç
+    } else {
         setLanguage(userLang);
+    }
     });
+    document.getElementById('lang-tr').addEventListener('click', function() {
+        setLanguage('tr');
+        document.querySelector('nav').classList.remove('active'); // Dil seçimi sonrası menüyü kapat
+
+    });
+
+    document.getElementById('lang-en').addEventListener('click', function() {
+        setLanguage('en');
+        document.querySelector('nav').classList.remove('active'); // Dil seçimi sonrası menüyü kapat
+
+    });
+
 </script>
 
 </body>
