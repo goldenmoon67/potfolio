@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of a Software Developer">
+    <meta name="description" content="Mirac Altınay's portfolio showcasing skills in software development, blockchain, and mobile application development. Explore projects, blog posts, and contact information.">
+    <meta name="keywords" content="Mirac Altınay, portfolio, software development, blockchain developer, mobile app developer">
+    <meta property="og:url" content="https://www.miracaltinay.com">
+    <meta property="og:type" content="website">
     <title>Mirac Altınay</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
 <header>
@@ -461,8 +466,14 @@
 
 </footer>
 
+
+
+
 <script>
-    const userLang = navigator.language || navigator.userLanguage;
+   
+        var userLang = navigator.language || navigator.userLanguage;
+
+
 
     function setLanguage(lang) {
         if (lang.includes('tr')) {
@@ -476,34 +487,6 @@
             document.querySelector('.skills-subtitle').textContent = "Uzmanlık Alanlarım";
             document.querySelector('#contact h2').textContent = "İletişim";
             document.querySelector('#contact p').textContent = "Benimle iletişime geçmek isterseniz, e-posta gönderebilir veya sosyal medya hesaplarım üzerinden ulaşabilirsiniz.";
-        } else {
-            document.querySelector('.hero-content h1').textContent = "Hello, I am Mirac Altınay!";
-            document.querySelector('.hero-content p').textContent = "Software Engineer";
-            document.querySelector('a[href="#experience"]').textContent = "View My Work";
-            document.querySelector('.experience-title').textContent = "Experiences";
-            document.querySelector('.experience-subtitle').textContent = "A brief overview of my professional journey";
-            document.querySelector('#projects h2').textContent = "My Projects";
-            document.querySelector('.skills-title').textContent = "My Skills";
-            document.querySelector('.skills-subtitle').textContent = "My Areas of Expertise";
-            document.querySelector('#contact h2').textContent = "Contact Me";
-            document.querySelector('#contact p').textContent = "If you'd like to get in touch, feel free to reach out via email or connect with me on social media.";
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        setLanguage(userLang);
-    });
-</script>
-
-
-<script>
-    if(userLang=="undifended"){
-        const userLang = navigator.language || navigator.userLanguage;
-
-    }
-
-    function setLanguage(lang) {
-        if (lang.includes('tr')) {
             // Navigation
             document.querySelector('a[href="#hero"]').textContent = "Hakkımda";
             document.querySelector('a[href="#experience"]').textContent = "Deneyimler";
@@ -562,7 +545,6 @@
             document.querySelectorAll('.project-item')[0].querySelector('h3').textContent = "zero2hero Mobil Uygulama";
             document.querySelectorAll('.project-item')[0].querySelector('p').textContent = "Çalıştığım projedeki istenilen mobil uygulama Figma tasarımından birebir olarak geliştirilip tamamlandı. RestApi kullanılan projede Bloc pattern ve getIt kullanılarak backend ilişkisi ve state managment kısımları sağlandı. Uygulama Play Store ve App Store da yayınlandı";
             document.querySelectorAll('.project-item')[0].querySelectorAll('.btn-small')[0].textContent = "Detaylar";
-            document.querySelectorAll('.project-item')[0].querySelectorAll('.btn-small')[1].textContent = "GitHub";
 
             // İkinci proje
             document.querySelectorAll('.project-item')[1].querySelector('h3').textContent = "Arty Mates";
@@ -632,6 +614,17 @@
             document.querySelector('.footer-update').textContent = "Son güncelleme tarihi 27.07.2024";
 
         } else {
+            document.querySelector('.hero-content h1').textContent = "Hello, I am Mirac Altınay!";
+            document.querySelector('.hero-content p').textContent = "Software Engineer";
+            document.querySelector('a[href="#experience"]').textContent = "View My Work";
+            document.querySelector('.experience-title').textContent = "Experiences";
+            document.querySelector('.experience-subtitle').textContent = "A brief overview of my professional journey";
+            document.querySelector('#projects h2').textContent = "My Projects";
+            document.querySelector('.skills-title').textContent = "My Skills";
+            document.querySelector('.skills-subtitle').textContent = "My Areas of Expertise";
+            document.querySelector('#contact h2').textContent = "Contact Me";
+            document.querySelector('#contact p').textContent = "If you'd like to get in touch, feel free to reach out via email or connect with me on social media.";
+      
             // Navigation
             document.querySelector('a[href="#hero"]').textContent = "About Me";
             document.querySelector('a[href="#experience"]').textContent = "Experiences";
@@ -687,7 +680,6 @@
             document.querySelectorAll('.project-item')[0].querySelector('h3').textContent = "zero2hero Mobile Application";
             document.querySelectorAll('.project-item')[0].querySelector('p').textContent = "The requested mobile application in the project I worked on was developed and completed exactly according to the Figma design. In the project, which used RestApi, the backend integration and state management were handled using Bloc pattern and getIt. The application has been published on both the Play Store and the App Store.";
             document.querySelectorAll('.project-item')[0].querySelectorAll('.btn-small')[0].textContent = "Details";
-            document.querySelectorAll('.project-item')[0].querySelectorAll('.btn-small')[1].textContent = "GitHub";
 
             // İkinci proje
             document.querySelectorAll('.project-item')[1].querySelector('h3').textContent = "Arty Mates";
@@ -704,7 +696,6 @@
             document.querySelectorAll('.project-item')[3].querySelector('h3').textContent = "LifeBall";
             document.querySelectorAll('.project-item')[3].querySelector('p').textContent = "As part of the Mobile Application course, I developed a social soccer mobile application that can be actively run on Android as an APK file. In this application, I used Firebase Cloud Database, and it also includes features such as Firebase Auth.";
             document.querySelectorAll('.project-item')[3].querySelectorAll('.btn-small')[0].textContent = "Details";
-            document.querySelectorAl
 
             // Yetenekler kısmı İngilizce
             document.querySelector('.skills-title').textContent = "My Skills";
@@ -755,6 +746,8 @@
             // Footer kısmı İngilizce
             document.querySelector('.footer-copyright').textContent = "© 2024 Mirac Altınay. All rights reserved.";
             document.querySelector('.footer-update').textContent = "Last updated on 27.07.2024";
+            document.querySelectorAl
+
         }
     }
 
