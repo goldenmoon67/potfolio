@@ -83,7 +83,9 @@ nav .social-icon:hover {
 }
 /* Hero Section */
 #hero {
-    height: 100vh;
+    padding-top: 150px; /* Add space equal to or greater than the navbar height */
+    min-height: 100vh; /* This ensures the hero section always takes at least the full screen height */
+    height: auto; /* Allow the height to grow based on content */
     background: url('images/background.png') center/cover no-repeat;
     display: flex;
     justify-content: center;
@@ -92,6 +94,8 @@ nav .social-icon:hover {
     color: #fff;
     flex-direction: column;
     position: relative;
+    padding: 20px; /* Add some padding to make sure content is not touching edges */
+
 }
 
 .hero-content {
@@ -459,6 +463,8 @@ footer {
     justify-content: center; /* İçerikleri ortala */
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* This will ensure the content wraps on smaller screens */
+
 }
 
 .profile-photo-left {
@@ -468,21 +474,7 @@ footer {
     object-fit: cover;
     margin-right: 180px; /* Resim ile yazı arasında boşluk bırak */
 }
-@media (max-width: 768px) {
-    .hero-header {
-        flex-direction: column; /* Stack items vertically on smaller screens */
-        align-items: center;
-    }
 
-    .text-content {
-        text-align: center; /* Center the text on smaller screens */
-    }
-
-    .profile-photo-right {
-        margin-left: 0;
-        margin-bottom: 20px;
-    }
-}
 
 .hero-about {
     margin-top: 20px; /* Butonun altına boşluk bırak */
@@ -702,14 +694,24 @@ body {
 
 /* Mobil cihazlar için */
 @media (max-width: 768px) {
-    .container, nav, .hero-content {
+    .hero-content {
+        width: 100%;
+        padding: 0 15px; /* Kenar boşluklarını azalt */
+        box-sizing: border-box;
+        margin-top: 80px;
+    }
+    .container {
         width: 100%;
         padding: 0 15px; /* Kenar boşluklarını azalt */
         box-sizing: border-box;
     }
-
+     nav {
+        width: 100%;
+        padding: 0 15px; /* Kenar boşluklarını azalt */
+        box-sizing: border-box;
+    }
     /* Resim ve içerikleri tam ekrana sığdır */
-    .profile-photo-left, .text-content {
+    .text-content {
         max-width: 100%;
         margin: 0 auto;
     }
@@ -719,7 +721,13 @@ body {
         text-align: center;
     }
 }
-
+/* Handle zoom adjustments */
+@media (min-height: 850px) {
+    #hero {
+        min-height: 100vh; /* Ensure it takes at least full viewport height */
+        padding: 60px 20px;
+    }
+}
 @media (max-width: 768px) {
     .social-icons-nav {
     display: none !important; /* Mobil cihazlarda kesinlikle ikonları gizle */
@@ -728,17 +736,48 @@ body {
 }
 
 @media (max-width: 768px) {
-    #hero {
-        height: 250vh; /* Resmi genişlik yüzde 100 ve yükseklik yüzde 150 olarak ayarlar */
-        background-position: top center; /* Resmi ortalar ve üstten hizalar */
+    hero {
+        min-height: auto;
+        margin-top: 400px;
+        padding-top: 420px; /* Increase the padding for smaller devices to ensure image visibility */
+        background-position: top center; /* Ensure the background image stays centered */
+    }
+
+    .hero-header {
+        flex-direction: column; /* Stack the image and text vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-photo-left {        margin-top: 400px;
+        margin: 0 auto 10px auto; /* Center the image and add small bottom margin */
+        width: 120px; /* Fixed width for better control */
+        height: 120px; /* Keep image proportions */
+        object-fit: cover; /* Ensure the entire image is visible */
+        border-radius: 50%; /* Make it circular */
+    }
+
+    .hero-content h1 {
+        font-size: 32px; /* Adjust font size for smaller screens */
+        margin-bottom: 10px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .hero-about p {
+        font-size: 16px; /* Reduce paragraph text size */
+        padding: 10px;
+    }
+
+    .hero-content .btn {
+        padding: 10px 20px;
+        font-size: 16px;
     }
 }
 
-@media (max-width: 768px) {
-    .hero-content .btn {
-        display: none; /* Mobilde butonları gizler */
-    }
-}
 @media (max-width: 768px) {
     .timeline-item:before {
         display: none; /* Mobilde soldaki çubuğu gizler */
