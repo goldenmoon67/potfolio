@@ -751,6 +751,7 @@ body {
     }
 
     .hero-content .btn {
+        display: none;
         padding: 10px 20px;
         font-size: 16px;
     }
@@ -786,8 +787,7 @@ nav.active .language-switch {
 .lang-btn:hover {
     background-color: #666;
 }
-/* Hamburger menü aktif olduğunda dil butonları da mobilde menünün içine alınacak */
-@media (max-width: 768px) {
+@media (max-width: 410px) {
     .language-switch {
         margin-left: 20px; /* Dil butonlarını logo ve hamburger menüden uzaklaştırmak için */
 
@@ -800,6 +800,44 @@ nav.active .language-switch {
         background-color: #111;
         position: absolute;
         top: 105px;
+        left: -20px;
+        width: 100%;
+        padding: 10px;
+        z-index: 1000;
+    }
+
+    nav.active ul {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+    }
+
+}
+
+@media (max-width: 768px )and (min-width: 430px) {
+    .language-switch {
+        margin-left: 20px; /* Dil butonlarını logo ve hamburger menüden uzaklaştırmak için */
+
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background-color: #111;
+        position: absolute;
+        top: 66px;
         left: -20px;
         width: 100%;
         padding: 10px;
