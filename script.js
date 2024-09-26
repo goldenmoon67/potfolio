@@ -6,6 +6,17 @@ hamburger.addEventListener('click', () => {
     nav.classList.toggle('active');
 });
 
+
+// Close hamburger menu when clicking outside of it
+document.addEventListener('click', (event) => {
+    const isClickInsideHamburger = hamburger.contains(event.target);
+    const isClickInsideNav = nav.contains(event.target);
+
+    if (!isClickInsideHamburger && !isClickInsideNav) {
+        nav.classList.remove('active');
+    }
+});
+
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

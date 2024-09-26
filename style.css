@@ -661,29 +661,7 @@ footer {
     background-color: #fff;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        display: none; /* Mobilde ana menüyü gizle */
-        flex-direction: column;
-        gap: 15px;
-        background-color: #111;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 10px;
-        z-index: 1000;
-    }
 
-    nav.active ul {
-        display: flex; /* Menü tıklandığında açılır */
-    }
-
-    .hamburger {
-    margin-left: auto; /* Hamburger menüyü sağa alır */
-        display: flex; /* Sadece mobilde hamburger menü görünür */
-    }
-}
 
 /* Genel ekran uyumu */
 body {
@@ -821,8 +799,8 @@ nav.active .language-switch {
         gap: 15px;
         background-color: #111;
         position: absolute;
-        top: 60px;
-        left: 0;
+        top: 105px;
+        left: -20px;
         width: 100%;
         padding: 10px;
         z-index: 1000;
