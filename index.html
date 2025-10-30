@@ -1,424 +1,1928 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mirac Altınay's portfolio showcasing skills in software development, blockchain, and mobile application development. Explore projects, blog posts, and contact information.">
-    <meta name="keywords" content="Mirac Altınay, portfolio, software development, blockchain developer, mobile app developer">
+    <title>Mirac Altınay - Software Engineer</title>
+    <meta name="description"
+        content="Mirac Altınay's portfolio showcasing skills in software development, blockchain, and mobile application development. Explore projects, blog posts, and contact information.">
+    <meta name="keywords"
+        content="Mirac Altınay, portfolio, software development, blockchain developer, mobile app developer, flutter, Django, Node.js">
     <meta property="og:url" content="https://www.miracaltinay.com">
     <meta property="og:type" content="website">
-    <title>Mirac Altınay</title>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff41;
+            --secondary: #00d9ff;
+            --accent: #ff006e;
+            --dark: #0a0e27;
+            --darker: #060815;
+            --light: #e8e8e8;
+            --gray: #8892b0;
+            --code-bg: #112240;
+            --terminal-green: #00ff41;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Matrix-like background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--darker);
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(20px);
+            }
+        }
+
+        .code-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--terminal-green);
+            font-family: 'Courier New', monospace;
+        }
+
+        .logo::before {
+            content: '> ';
+            color: var(--terminal-green);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a::before {
+            content: '$ ';
+            color: var(--terminal-green);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+
+        .nav-links a:hover {
+            color: var(--terminal-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .terminal-window {
+            background: var(--code-bg);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 255, 65, 0.1);
+        }
+
+        .terminal-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .terminal-button:nth-child(2) {
+            background: #ffd60a;
+        }
+
+        .terminal-button:nth-child(3) {
+            background: var(--terminal-green);
+        }
+
+        .terminal-content {
+            padding: 2rem;
+            font-family: 'Consolas', monospace;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .terminal-line:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .terminal-line:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .terminal-line:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .terminal-line:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .terminal-line:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .prompt {
+            color: var(--terminal-green);
+            margin-right: 0.5rem;
+        }
+
+        .command {
+            color: var(--secondary);
+        }
+
+        .output {
+            color: var(--light);
+            margin-left: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--terminal-green);
+            margin: 1rem 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border: 2px solid var(--terminal-green);
+            background: transparent;
+            color: var(--terminal-green);
+            text-decoration: none;
+            font-family: 'Consolas', monospace;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .cta-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                font-size: 0.85rem;
+                padding: 0.8rem 1rem;
+                white-space: nowrap;
+                overflow: visible;
+            }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--terminal-green);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: var(--darker);
+        }
+
+        .btn-secondary {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary::before {
+            background: var(--secondary);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--terminal-green);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .section-title::before {
+            content: '// ';
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-left: 3rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-date {
+            text-align: right;
+            color: var(--gray);
+            font-size: 0.9rem;
+            padding-right: 2rem;
+            border-right: 2px solid var(--terminal-green);
+        }
+
+        .timeline-date .duration {
+            display: block;
+            color: var(--terminal-green);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            font-weight: 600;
+        }
+
+        .timeline-content {
+            background: var(--code-bg);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-left: 3px solid var(--terminal-green);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--terminal-green);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.15);
+            transform: translateX(5px);
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            float: left;
+            margin-right: 1rem;
+            border-radius: 8px;
+            background: white;
+            padding: 5px;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            color: var(--terminal-green);
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .company-name {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            clear: both;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .timeline-content li {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--terminal-green);
+        }
+
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            color: var(--terminal-green);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            font-family: 'Consolas', monospace;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--code-bg);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--terminal-green), var(--secondary));
+        }
+
+        .project-card:hover {
+            border-color: var(--terminal-green);
+            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            color: var(--terminal-green);
+        }
+
+        .project-links-header {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--gray);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--terminal-green);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            color: var(--terminal-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-description {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--code-bg);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--terminal-green);
+            transition: height 0.3s;
+        }
+
+        .skill-card:hover::before {
+            height: 100%;
+        }
+
+        .skill-card:hover {
+            border-color: var(--terminal-green);
+            transform: translateX(5px);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .skill-info h3 {
+            font-size: 1.4rem;
+            color: var(--terminal-green);
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-category {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .skill-experience {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            color: var(--terminal-green);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .skill-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .skill-items {
+            list-style: none;
+        }
+
+        .skill-items li {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-items li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--terminal-green);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-box {
+            background: var(--code-bg);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            color: var(--terminal-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .email-display {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-family: 'Consolas', monospace;
+        }
+
+        .email-display a {
+            color: var(--secondary);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .email-display a:hover {
+            border-bottom-color: var(--secondary);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-item {
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--gray);
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-item i {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--terminal-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-item:hover {
+            background: rgba(0, 255, 65, 0.1);
+            border-color: var(--terminal-green);
+            color: var(--terminal-green);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-accent::before {
+            background: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(0, 255, 65, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+            background: var(--code-bg);
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+        }
+
+        .footer-ascii {
+            color: var(--terminal-green);
+            font-size: 0.7rem;
+            margin-top: 1rem;
+            opacity: 0.5;
+        }
+
+        .email-display a {
+            word-break: break-all;
+            white-space: normal;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-date {
+                text-align: left;
+                border-right: none;
+                border-bottom: 2px solid var(--terminal-green);
+                padding-right: 0;
+                padding-bottom: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Code block styling */
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-left: 3px solid var(--terminal-green);
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        code {
+            color: var(--secondary);
+            font-family: 'Consolas', monospace;
+        }
+    </style>
 </head>
 
 <body>
-<header>
-    <nav>
-        <div class="logo">Mirac Altınay</div>
-        <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <ul>
-            <li><a href="#hero">Hakkımda</a></li>
-            <li><a href="#experience">Deneyimler</a></li>
-            <li><a href="#projects">Projeler</a></li>
-            <li><a href="#contact">İletişim</a></li>
-        </ul>
-        <div class="social-icons-nav">
-            <a href="https://github.com/goldenmoon67" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/abdulmiracaltinay/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://medium.com/@abdulmirac" target="_blank" class="social-icon"><i class="fab fa-medium"></i></a>
-            <a href="https://stackoverflow.com/users/18397552/mirac-altinay" target="_blank" class="social-icon"><i class="fab fa-stack-overflow"></i></a>
-            <a href="https://instagram.com/altinaymirac" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/+905372372995" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <div class="language-switch">
-            <button id="lang-tr" class="lang-btn">TR</button>
-            <button id="lang-en" class="lang-btn">EN</button>
-        </div>
-    </nav>
-</header>
-
-
+    <div class="bg-animation"></div>
 
     <nav>
-        <div class="logo">Mirac Altınay</div>
-        <ul>
-            <li><a href="#hero">Hakkımda</a></li>
-            <li><a href="#experience">Deneyimler</a></li>
-            <li><a href="#projects">Projeler</a></li>
-            <li><a href="#contact">İletişim</a></li>
-        </ul>
-        <div class="social-icons-nav">
-            <a href="https://github.com/goldenmoon67" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/abdulmiracaltinay/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://medium.com/@abdulmirac" target="_blank" class="social-icon"><i class="fab fa-medium"></i></a>
-            <a href="https://stackoverflow.com/users/18397552/mirac-altinay" target="_blank" class="social-icon"><i class="fab fa-stack-overflow"></i></a>
-            <a href="https://instagram.com/altinaymirac" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/+905372372995" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-        </div>
-
-        <div class="language-switch">
-            <button id="lang-tr" class="lang-btn">TR</button>
-            <button id="lang-en" class="lang-btn">EN</button>
+        <div class="nav-container">
+            <div class="logo">mirac.dev</div>
+            <ul class="nav-links">
+                <li><a href="#hero">home</a></li>
+                <li><a href="#experience">experience</a></li>
+                <li><a href="#projects">projects</a></li>
+                <li><a href="#skills">skills</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
         </div>
     </nav>
-</header>
 
-<section id="hero">
-    <div class="hero-content">
-        <div class="hero-header">
-            <img src="images/portfolio.jpg" alt="Mirac Altınay" class="profile-photo-left">
-            <div class="text-content">
-                <h1 class="fade-in">Merhaba, Ben Mirac Altınay!</h1>
-                <p class="scrolling-text">Bilgisayar Mühendisi</p>
-                <a href="#experience" class="btn">Çalışmalarıma Göz At</a>
-            </div>
-        </div>
-        
-        <div id="about" class="hero-about">
-           
-            <p>Tam ismim Abdulmiraç olsa da Mirac'ı kullanmayı tercih ediyorum. Selçuk Üniversitesi Bilgisayar Mühendisliği mezunuyum ve Ocak 2022'den bu yana Londra merkezli zero2hero projesinde aktif olarak çalışmaktayım. Kariyerime yazılım geliştirme ve mobil uygulama geliştirme alanlarında yoğunlaştım. Özellikle zero2hero projesi, bana takım çalışması ve profesyonel iş hayatı konusunda büyük tecrübeler kattı. Bu süreçte, projenin mobil uygulamasının geliştirilmesi ve bakımı gibi önemli sorumluluklar üstlendim. Ayrıca, backend tarafında endpoint geliştirilmesi gibi teknik konularda da aktif rol aldım.
-
-                Kariyerimin başında, yine Londra merkezli bir başka şirket olan Oasis Software Tech'te kısa dönem staj yaparak önemli deneyimler kazandım.
-                
-                Kendi başıma hem backend hem de mobil alanda geliştirdiğim projelerden bazıları, mezuniyet projem olan Arty Mates Uygulaması, Investit Beta kripto portföyü mobil uygulaması ve LifeBall sosyal halı saha uygulamasıdır. Bu projeler sayesinde ExpressJS, MongoDB, Neo4j, Docker Compose, RESTful API, Flutter, Firebase Auth gibi teknolojilerde uzmanlık kazandım.
-                
-                Profesyonel yaşamımda, takım çalışması ve iletişim becerilerimi sürekli geliştirerek projelere yenilikçi çözümler getirmeye odaklanıyorum. Hedefim, mobil uygulama geliştirme ve backend teknolojileri alanında kendimi sürekli geliştirerek bu alandaki en iyi uygulamaları hayata geçirmektir. İyi derecede İngilizce bildiğimi de belirtmek isterim.
-                
-                Referanslarım ve detaylı bilgi için LinkedIn profilime ve GitHub hesabıma göz atabilirsiniz.
-            </p>
-        </div>
-    </div>
-</section>
-
-
-
-<section id="experience">
-    <h2 class="experience-title">Deneyimler</h2>
-    <p class="experience-subtitle">Mesleki yolculuğuma dair kısa bir özet</p>
-    
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-date" data-start-date="2022-01-01" data-end-date="today">
-                <span>Ocak 2022- Günümüz</span>
-                <span class="duration"></span>
-            </div>
-            <div class="timeline-content">
-                <div class="job-header">
-                    <img src="images/zero2hero.svg" alt="zero2hero logo" class="job-logo">
-                    <div>
-                        <h3>Mobile Developer (Flutter) & Backend Developer (Node.js)</h3>
-                        <h4>zero2hero - Londra/Birleşik Krallık</h4>
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-button"></div>
+                    <div class="terminal-button"></div>
+                    <div class="terminal-button"></div>
+                </div>
+                <div class="terminal-content">
+                    <div class="terminal-line">
+                        <span class="prompt">mirac@dev:~$</span>
+                        <span class="command">cat about.txt</span>
+                    </div>
+                    <div class="terminal-line">
+                        <h1 class="hero-title">Mirac Altınay</h1>
+                    </div>
+                    <div class="terminal-line">
+                        <p class="hero-subtitle">Software Engineer | Mobile & Backend Developer</p>
+                    </div>
+                    <div class="terminal-line">
+                        <p class="hero-description">
+                            Selçuk Üniversitesi Bilgisayar Mühendisliği mezunuyum. 2022'den beri Londra merkezli
+                            zero2hero projesinde mobil ve backend geliştirme üzerine çalışıyorum. Flutter, Node.js,
+                            Python ile ölçeklenebilir ve performanslı uygulamalar geliştiriyorum.
+                        </p>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="cta-section">
+                            <a href="#projects" class="btn">view_projects()</a>
+                            <a href="#contact" class="btn btn-secondary">contact_me()</a>
+                        </div>
                     </div>
                 </div>
-                <p>Londra merkezli bu projede kısa sürede kendi becerilerimi göstererek 5 ay gibi kısa bir sürede mobil uygulamanın geliştirilmesinden sorumlu tek kişi olmayı başardım. Takım çalışmasını ve IT dünyasını bu projeyle yakından tanıdım ve tecrübe kazandım. Geliştirdiğim mobil uygulama hem Play Store hem App Store da yayınlanmış durumda.</p>
-                <ul>
-                    <li>Projenin mobil uygulamasının geliştirilmesi (Flutter)</li>
-                    <li>Geliştirilen uygulamanın yayınlanması</li>
-                    <li>FLUTTER-> Firebase Auth, Bloc Pattern, getIt, backend services</li>
-                    <li>Backend tarafında endpoint geliştirilmesi. (Node.JS)</li>
-                </ul>
-                <a href="https://zero2hero.net" target="_blank" class="btn-small">Daha Fazla Bilgi</a>
             </div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-date"  data-start-date="2024-02-20" data-end-date="2024-07-1">
-                <span>Şubat 2024- Temmuz 2024</span>
-                <span class="duration"></span>
 
-            </div>
-            <div class="timeline-content">
-                <div class="job-header">
-                    <img src="images/anadolubank.svg" alt="anadolubank logo" class="job-logo">
-                    <div>
-                        <h3>Uzun Dönem Stajyer</h3>
-                        <h4>Anadolubank A.Ş.- Istanbul/Türkiye</h4>
+
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">Profesyonel çalışma geçmişim</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span>Ocak 2022<br>Günümüz</span>
+                    <span class="duration">2+ yıl</span>
+                </div>
+                <div class="timeline-content">
+                    <img src="images/zero2hero.svg" alt="zero2hero" class="company-logo">
+                    <h3 class="job-title">Mobile & Backend Developer</h3>
+                    <p class="company-name">zero2hero • Londra, UK • Remote</p>
+                    <p>Flutter ile cross-platform mobil uygulama geliştirme ve Node.js ile RESTful API geliştirme. 5 ay
+                        içinde projenin mobil uygulama sorumlusu oldum. Uygulama Play Store ve App Store'da yayında.</p>
+                    <ul>
+                        <li>Flutter ile iOS ve Android uygulaması geliştirme</li>
+                        <li>BLoC pattern ve clean architecture implementasyonu</li>
+                        <li>Node.js ile backend endpoint geliştirme</li>
+                        <li>Firebase Auth entegrasyonu ve state management</li>
+                        <li>App Store ve Play Store deployment süreçleri</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">BLoC</span>
+                        <span class="tech-tag">REST API</span>
                     </div>
                 </div>
-                <p>Uzun dönem stajımı kurumsal bir bankacılık şirketi
-                    olan ANADOLUBANK A.Ş’de tamamladım. Bu dönemde BT
-                    dünyasındaki çalışmalara yakından tanık oldum. Benden istenen backend projesini Python flask ile tamamladım. Aynı zamanda yapay zeka Uygulamaları da bu projenin bir parçası oldu.</p>
-                <ul>
-                    <li>RESTAPI çalışmaları (Python - flask)</li>
-                    <li>Yapay zeka çalışmaları (Python)</li>
-                    <li>Mobil Uygulama geliştirme (KOTLIN)</li>
-                
-                </ul>
-                <a href="https://anadolubank.com.tr/" target="_blank" class="btn-small">Daha Fazla Bilgi</a>
             </div>
-        </div>
-    
-        <div class="timeline-item">
-            <div class="timeline-date"  data-start-date="2024-07-01" data-end-date="2024-09-1">
-                <span>Temmuz 2022- Eylül 2022</span>
-                <span class="duration"></span>
 
-            </div>
-            <div class="timeline-content">
-                <div class="job-header">
-                    <img src="images/oasis.png" alt="oasis logo" class="job-logo">
-                    <div>
-                        <h3>Stajyer</h3>
-                        <h4>Oasis Software Tech.- Londra/Birleşik Krallık</h4>
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span>Şubat 2024<br>Temmuz 2024</span>
+                    <span class="duration">6 ay</span>
+                </div>
+                <div class="timeline-content">
+                    <img src="images/anadolubank.svg" alt="Anadolubank" class="company-logo">
+                    <h3 class="job-title">Uzun Dönem Stajyer</h3>
+                    <p class="company-name">Anadolubank A.Ş. • İstanbul, TR</p>
+                    <p>Kurumsal bankacılık sistemlerinde Python Flask ile backend geliştirme ve yapay zeka uygulamaları.
+                        Kotlin ile native Android geliştirme deneyimi.</p>
+                    <ul>
+                        <li>Python Flask ile REST API geliştirme</li>
+                        <li>Machine Learning modelleri entegrasyonu</li>
+                        <li>Kotlin ile Android native geliştirme</li>
+                        <li>Bankacılık sistemleri backend altyapısı</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">ML/AI</span>
+                        <span class="tech-tag">Kotlin</span>
                     </div>
                 </div>
-                <p>Kısa dönem stajımı tamamladığım bu şirkette testerlık
-                    yaparak IT dünyasını tanımaya çalıştım.</p>
-                <ul>
-                    <li>
-                        Projenin backend testlerinin yapılması (Postman)
-                    </li>
-                    <li>
-                        Projenin front-end testlerinin yapılması (Cypress)
-                    </li> 
-                    <li>
-                        Mobil uygulama için tasarlanan sayfaları geliştirilmesi (Flutter)
-                    </li>
-                
-                </ul>
-                <a href="https://www.oasissofttech.com/" target="_blank" class="btn-small">Daha Fazla Bilgi</a>
             </div>
-        </div>
-  
-    </div>
-</section>
 
-<section id="projects">
-    <h2>Projelerim</h2>
-    <div class="project-grid">
-        <div class="project-item">
-            <img src="images/z2h_mobile.png" alt="z2h_mobile">
-            <h3>zero2hero Mobil Uygulama</h3>
-            <p>Çalıştığım projedeki istenilen mobil uygulama Figma tasarımından birebir olarak geliştirilip tamamlandı. RestApi kullanılan projede Bloc pattern ve getIt kullanılarak backend ilişkisi ve state managment kısımları sağlandı. Uygulama Play Store ve App Store da yayınlandı.</p>
-            <div class="project-buttons">
-                <a href="https://www.zero2hero.net/" class="btn-small">Detaylar</a>
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span>Temmuz 2022<br>Eylül 2022</span>
+                    <span class="duration">3 ay</span>
+                </div>
+                <div class="timeline-content">
+                    <img src="images/oasis.png" alt="Oasis" class="company-logo">
+                    <h3 class="job-title">Software Test Intern</h3>
+                    <p class="company-name">Oasis Software Tech • Londra, UK • Remote</p>
+                    <p>Backend ve frontend test süreçleri, Flutter ile UI component geliştirme.</p>
+                    <ul>
+                        <li>Postman ile API testing</li>
+                        <li>Cypress ile E2E test senaryoları</li>
+                        <li>Flutter UI component geliştirme</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Postman</span>
+                        <span class="tech-tag">Cypress</span>
+                        <span class="tech-tag">Flutter</span>
+                    </div>
+                </div>
             </div>
-            <div class="chips-container">
-                <span class="chip">Flutter</span>
-                <span class="chip">Firebase Auth</span>
-                <span class="chip">Bloc Pattern</span>
-                <span class="chip">getIt</span>
-                <span class="chip">AutoRouter</span>
-                <span class="chip">Shared Preferences</span>
+        </div>
+    </section>
 
-            </div>
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Geliştirdiğim öne çıkan projeler</p>
         </div>
-        <div class="project-item">
-            <img src="images/kitap_arkdadasligi.png" alt="artymates">
-            <h3>Arty Mates</h3>
-            <p>Bitirme projem olan ve kullanıcıların hobileri ile ilgili bir sosyal medya uygulaması olan bu uygulamada graphQL bir backend geliştirdim. Apollo server kullandığım bu uygulamada database olarak ise graph databaselerin öncülerinden neo4j ile çok ilişkili bir yapı kurararak deneyim kazandım.</p>
-            <div class="project-buttons">
-                <a href="https://github.com/goldenmoon67/ArtyMates-API" class="btn-small">Detaylar</a>
-                <a href="https://github.com/goldenmoon67/ArtyMates-API" class="btn-small">GitHub</a>
-            </div>
-            <div class="chips-container">
-                <span class="chip">Node.js</span>
-                <span class="chip">GraphQL (Apollo Server)</span>
-                <span class="chip">Grapg Database (neo4j)</span>
-                <span class="chip">JWT</span>
-                <span class="chip">MongoDB</span>
 
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-links-header">
+                        <a href="https://www.zero2hero.net/" target="_blank" class="project-link" title="Website">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">zero2hero Mobile</h3>
+                    <p class="project-description">
+                        Production-ready Flutter uygulaması. BLoC pattern ve clean architecture ile geliştirildi. Play
+                        Store ve App Store'da 1000+ aktif kullanıcı.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">BLoC</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">GetIt</span>
+                        <span class="tech-tag">AutoRouter</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="project-links-header">
+                        <a href="https://github.com/goldenmoon67/ArtyMates-API" target="_blank" class="project-link"
+                            title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Arty Mates API</h3>
+                    <p class="project-description">
+                        Hobi bazlı sosyal medya platformu backend'i. GraphQL API ve Neo4j graph database. Bitirme
+                        projesi olarak geliştirildi.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">Apollo Server</span>
+                        <span class="tech-tag">Apollo Server</span>
+                        <span class="tech-tag">Neo4j</span>
+                        <span class="tech-tag">JWT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-links-header">
+                        <a href="#" class="project-link" title="Private">
+                            <i class="fas fa-lock"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Banking ML System</h3>
+                    <p class="project-description">
+                        Anadolubank için geliştirilen yapay zeka destekli bankacılık sistemi. Python Flask backend ve ML
+                        modelleri.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">TensorFlow</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="project-item">
-            <img src="images/investit_beta.png" alt="investit_beta">
-            <h3>Investit Beta</h3>
-            <p>Geliştirmekte olduğum kripto portföyü mobil 
-                uygulamasının beta sürümü hazır ve Play Store'da Android telefonlariçin indirilebilir durumdadır. Bu uygulamada API'siz bir çalışma yaparak kullanıcıların sadece satış hedef fiyatlarını hesaplayabileceği bir mobil uygulama geliştirdim.
-            </p>
-            <div class="project-buttons">
-                <a href="https://play.google.com/store/apps/details?id=com.goldenmoon.investitbeta&hl=en_US" class="btn-small">Detaylar</a>
-                <a href="https://github.com/goldenmoon67/investmentCalculator" class="btn-small">GitHub</a>
-            </div>
-            <div class="chips-container">
-                <span class="chip">Flutter</span>
-                <span class="chip">Hive Database</span>
-                <span class="chip">Local storage </span>
-            </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">Kullandığım teknolojiler ve araçlar</p>
         </div>
-        <div class="project-item">
-            <img src="images/lifeball.png" alt="lifeball">
-            <h3>LifeBall</h3>
-            <p>Mobil Uygulama dersi kapsamında geliştirdiğim ve apk
-                dosyası olarak aktif olarak androidde çalıştırılabilen bir sosyal
-                halısaha mobil uygulaması. Firebase cloud database kullandığım bu uygulamada Firebase Auth gibi özellikler de mevcuttur.
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <h3>
+                            <i class="fab fa-flutter" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+                            Flutter/Dart
+                        </h3>
+                        <span class="skill-category">Mobile Development</span>
+                    </div>
+                    <span class="skill-experience">2+ Yıl</span>
+                </div>
+                <p class="skill-description">
+                    Cross-platform mobil uygulama geliştirme. Production-ready uygulamalar ve state management.
                 </p>
-            <div class="project-buttons">
-                <a href="https://github.com/goldenmoon67/lifeBall" class="btn-small">Detaylar</a>
-                <a href="https://github.com/goldenmoon67/lifeBall" class="btn-small">GitHub</a>
+                <ul class="skill-items">
+                    <li>BLoC Pattern & Cubit</li>
+                    <li>Clean Architecture</li>
+                    <li>GetIt Dependency Injection</li>
+                    <li>AutoRouter Navigation</li>
+                    <li>Firebase Integration</li>
+                    <li>REST API Consumption</li>
+                    <li>Custom UI Components</li>
+                    <li>App Store & Play Store Deployment</li>
+                </ul>
             </div>
-            <div class="chips-container">
-                <span class="chip">Flutter</span>
-                <span class="chip">Firebase Cloud</span>
-                <span class="chip">Firebase Auth</span>
-                <span class="chip">Hive Local Database</span>
 
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <h3>
+                            <i class="fab fa-node-js" style="color: #339933; margin-right: 0.5rem;"></i>
+                            Node.js
+                        </h3>
+                        <span class="skill-category">Backend Development</span>
+                    </div>
+                    <span class="skill-experience">2+ Yıl</span>
+                </div>
+                <p class="skill-description">
+                    RESTful API ve GraphQL backend geliştirme. Ölçeklenebilir ve performanslı sistemler.
+                </p>
+                <ul class="skill-items">
+                    <li>Express.js Framework</li>
+                    <li>RESTful API Design</li>
+                    <li>GraphQL & Apollo Server</li>
+                    <li>JWT Authentication</li>
+                    <li>Middleware Development</li>
+                    <li>Error Handling & Logging</li>
+                    <li>API Documentation</li>
+                    <li>Async/Await Patterns</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <h3>
+                            <i class="fab fa-python" style="color: #3776AB; margin-right: 0.5rem;"></i>
+                            Python
+                        </h3>
+                        <span class="skill-category">Backend & ML</span>
+                    </div>
+                    <span class="skill-experience">1+ Yıl</span>
+                </div>
+                <p class="skill-description">
+                    Backend API geliştirme ve machine learning model entegrasyonları.
+                </p>
+                <ul class="skill-items">
+                    <li>Flask Framework</li>
+                    <li>REST API Development</li>
+                    <li>TensorFlow & Keras</li>
+                    <li>Data Processing (Pandas, NumPy)</li>
+                    <li>ML Model Integration</li>
+                    <li>Database ORM (SQLAlchemy)</li>
+                    <li>Unit Testing (pytest)</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <h3>
+                            <i class="fas fa-database" style="color: var(--terminal-green); margin-right: 0.5rem;"></i>
+                            Database
+                        </h3>
+                        <span class="skill-category">Data Management</span>
+                    </div>
+                    <span class="skill-experience">2+ Yıl</span>
+                </div>
+                <p class="skill-description">
+                    İlişkisel ve NoSQL veritabanı yönetimi. Graph database deneyimi.
+                </p>
+                <ul class="skill-items">
+                    <li>Firebase Firestore</li>
+                    <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                    <li>Neo4j Graph Database</li>
+                    <li>Redis Caching</li>
+                    <li>Database Design & Optimization</li>
+                    <li>Query Optimization</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <h3>
+                            <i class="fab fa-android" style="color: #3DDC84; margin-right: 0.5rem;"></i>
+                            Kotlin
+                        </h3>
+                        <span class="skill-category">Android Development</span>
+                    </div>
+                    <span class="skill-experience">6 Ay</span>
+                </div>
+                <p class="skill-description">
+                    Native Android uygulama geliştirme. Modern Android development practices.
+                </p>
+                <ul class="skill-items">
+                    <li>Android SDK</li>
+                    <li>Jetpack Components</li>
+                    <li>Material Design</li>
+                    <li>MVVM Architecture</li>
+                    <li>Coroutines</li>
+                    <li>Room Database</li>
+                    <li>Retrofit HTTP Client</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <h3>
+                            <i class="fas fa-tools" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                            DevOps & Tools
+                        </h3>
+                        <span class="skill-category">Development Tools</span>
+                    </div>
+                    <span class="skill-experience">2+ Yıl</span>
+                </div>
+                <p class="skill-description">
+                    Geliştirme süreçleri, versiyon kontrol ve deployment araçları.
+                </p>
+                <ul class="skill-items">
+                    <li>Git & GitHub</li>
+                    <li>Docker Containerization</li>
+                    <li>CI/CD Pipelines</li>
+                    <li>Postman API Testing</li>
+                    <li>Cypress E2E Testing</li>
+                    <li>Firebase Services</li>
+                    <li>Agile/Scrum Methodology</li>
+                </ul>
             </div>
         </div>
-      
-    </div>
-</section>
+    </section>
 
-<section id="skills">
-    <h2 class="skills-title">Yeteneklerim</h2>
-    <p class="skills-subtitle">Uzmanlık Alanlarım</p>
-    
-    <div class="skills-grid">
-        <div class="skill-card">
-            <div class="skill-icon">
-                <img src="images/python.svg" alt="Python">
-            </div>
-            <h3>Python</h3>
-            <p>Backend Geliştirme , Yapay zeka ve Görüntü işleme çalışmaları
-            </p>
-            <ul>
-                <li>
-                   Flask
-                </li>
-                <li>
-                   OpenCV
-                </li> 
-                <li>
-                    Scikit
-                </li>
-                <li>
-                    TensorFlow
-                </li>
-                
-            </ul>
-        </div>
-                
-        <div class="skill-card">
-            <div class="skill-icon">
-                <img src="images/flutter.svg" alt="Flutter">
-            </div>
-            <h3>Flutter</h3>
-            <p>Mobile Geliştirme</p>
-            <ul>
-                <li>
-                    BLoC Pattern
-                </li>
-                <li>
-                    Firebase Auth
-                </li> 
-                <li>
-                    Local Databases
-                </li>
-                <li>
-                    Native Code
-                </li>
-                
-            </ul>
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Benimle iletişime geçin</p>
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">
-                <img src="images/resApi.svg" alt="RESTAPI">
+        <div class="contact-container">
+            <div class="contact-box">
+                <div class="terminal-window" style="margin-bottom: 2rem;">
+                    <div class="terminal-header">
+                        <div class="terminal-button"></div>
+                        <div class="terminal-button"></div>
+                        <div class="terminal-button"></div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="terminal-line" style="opacity: 1;">
+                            <span class="prompt">mirac@dev:~$</span>
+                            <span class="command">echo $EMAIL</span>
+                        </div>
+                        <div class="terminal-line" style="opacity: 1;">
+                            <span class="output email-display">
+                                <a href="mailto:abdulmirac@gmail.com">abdulmirac@gmail.com</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="contact-title">Let's Work Together</h3>
+                <p class="contact-description">
+                    Yeni projeler, iş fırsatları veya işbirliği teklifleri için benimle iletişime geçebilirsiniz.
+                    Mobil uygulama geliştirme ve backend sistemleri konusunda danışmanlık hizmeti de vermekteyim.
+                </p>
+
+                <div class="social-grid">
+                    <a href="https://github.com/goldenmoon67" target="_blank" class="social-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abdulmiracaltinay" target="_blank" class="social-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://twitter.com/miracaltinay" target="_blank" class="social-item">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="mailto:abdulmirac@gmail.com" class="social-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://medium.com/@abdulmirac" target="_blank" class="social-item">
+                        <i class="fab fa-medium"></i>
+                        <span>Medium</span>
+                    </a>
+                    <a href="https://stackoverflow.com/users/18397552/mirac-altinay" target="_blank"
+                        class="social-item">
+                        <i class="fab fa-stack-overflow"></i>
+                        <span>Stack Overflow</span>
+                    </a>
+                </div>
+
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(0, 255, 65, 0.2);">
+                    <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-map-marker-alt"
+                            style="color: var(--terminal-green); margin-right: 0.5rem;"></i>
+                        İstanbul/Zonguldak, Türkiye
+                    </p>
+                    <p style="color: var(--gray); font-size: 0.9rem;">
+                        <i class="fas fa-clock" style="color: var(--terminal-green); margin-right: 0.5rem;"></i>
+                        Remote ve Hibrit çalışmaya açığım
+                    </p>
+                </div>
             </div>
-            <h3>RESTAPI - (Node.js, python)</h3>
-            <p>RESTful API Çalışmaları</p>
-            <ul>
-                <li>
-                   Firebase Auth
-                </li>
-                <li>
-                   JWT authentication
-                </li> 
-                <li>
-                   SQL Database (mySQL)
-                </li>
-                <li>
-                    noSQL Database (MongoDB)
-                </li>
-                <li>
-                    graph Database (neo4j)
-                </li>
-                
-            </ul>
         </div>
+    </section>
 
+    <footer>
+        <p style="color: var(--terminal-green); font-weight: 600; margin-bottom: 0.5rem;">
+            &lt;/&gt; Mirac Altınay
+        </p>
+        <p>Son güncellenme tarihi:<span style="color: var(--accent);"> 30.10.2025</span></p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;">© 2025 Mirac Altınay. All rights reserved.</p>
 
-        <div class="skill-card">
-            <div class="skill-icon">
-                <img src="images/graphql.svg" alt="graphQL">
+        <div class="footer-ascii">
+            <pre
+                style="background: none; border: none; padding: 0; margin-top: 1.5rem; font-size: 0.6rem; line-height: 1.2;">
+    ╔═══════════════════════════════════════╗
+    ║  while(alive) { eat(); sleep(); code(); }  ║
+    ╚═══════════════════════════════════════╝
+            </pre>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Matrix rain effect (simplified)
+        function createMatrixRain() {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('code-rain');
+            document.querySelector('.bg-animation').appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const chars = '01';
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = Array(Math.floor(columns)).fill(1);
+
+            function draw() {
+                ctx.fillStyle = 'rgba(6, 8, 21, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = 'rgba(0, 255, 65, 0.3)';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(draw, 50);
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        createMatrixRain();
+    </script>
+    <script>
+        // ============================================
+        // VERİ TANIMLAMA BÖLÜMÜ - BURADAN YÖNETİN
+        // ============================================
+
+        const portfolioData = {
+            // Hero Bölümü Bilgileri
+            hero: {
+                name: "Miraç Altınay",
+                title: "Fullstack Developer (Mobile - Flutter & Backend - Django, Node.js)",
+                description: "5 yılı aşkın süredir sistem tasarımı ve yazılım geliştirme alanında deneyime sahip bir yazılım mühendisiyim. Flutter ile modern, performanslı ve kullanıcı odaklı mobil uygulamalar geliştiriyor; Django ve Node.js ile ölçeklenebilir ve güvenli backend sistemleri tasarlıyorum. Karmaşık yapıları optimize etme ve yenilikçi çözümler üretme konusundaki deneyimim, her projede yüksek kaliteli sonuçlar elde etmemi sağlıyor."
+            }
+            ,
+
+            // İş Deneyimleri
+            experiences: [{
+                dateRange: "Aralık 2024<br>Günümüz",
+                duration: "~1 yıl",
+                logo: "images/mr.svg",
+                title: "Mid Fullstack Developer",
+                company: "Matematik Röntgeni • İstanbul, TR • Remote",
+                description: "Matematik eğitimine yönelik bir mobil uygulama projesinin sıfırdan tasarlanıp hayata geçirilmesinde hem Flutter frontend hem de Django backend geliştirme süreçlerinden sorumlu oldum. Uygulamada kullanıcılar için ders içerikleri, test sistemleri, yapay zekâ destekli sohbet botu ve entegre ödeme altyapısı bulunuyor. Proje boyunca mobil performans, backend ölçeklenebilirliği ve kullanıcı deneyimini ön planda tutarak sürdürülebilir bir ürün mimarisi oluşturdum.",
+                highlights: [
+                    "Flutter ile modern, kullanıcı dostu ve yüksek performanslı mobil uygulama geliştirme",
+                    "Django ile RESTful API, admin paneli ve içerik yönetim sisteminin geliştirilmesi",
+                    "PostgreSQL veritabanı tasarımı, ilişkisel modelleme ve sorgu optimizasyonu",
+                    "Firebase entegrasyonu: Auth, Analytics, Cloud Messaging",
+                    "AI Chatbot ve doğal dil işleme modüllerinin entegrasyonu", "App Store ve Play Store yayınlama ve versiyon yönetimi süreçleri",
+                    "Stajyer ve yeni mezun geliştiricilerin mentörlüğü ve teknik yönlendirmesi",
+                    "Proje planlama, iş geliştirme ve UI/UX ekipleriyle koordinasyon"
+                ],
+                tags: ["Flutter", "Django", "PostgreSQL", "REST API", "Firebase", "AI Chatbot", "Payment Integration", "Admin Panel", "App Deployment", "Mentorship"]
+            }
+                ,
+            {
+                dateRange: "Ocak 2022<br>Aralık 2024",
+                duration: "2+ yıl",
+                logo: "images/zero2hero.svg",
+                title: "Junior Fullstack Developer",
+                company: "zero2hero • Londra, UK • Remote",
+                description: "Flutter ve Next.js teknolojilerini kullanarak hem mobil hem de backend geliştirme süreçlerinde aktif rol aldım. Kullanıcı deneyimini ön planda tutarak performanslı, ölçeklenebilir ve modern bir uygulama ekosistemi oluşturdum. Uygulama hem Google Play Store hem de App Store’da yayınlanarak binlerce kullanıcıya ulaştı.",
+                highlights: [
+                    "Flutter ile iOS ve Android için yüksek performanslı mobil uygulama geliştirme",
+                    "BLoC pattern ve Clean Architecture yaklaşımı ile sürdürülebilir kod yapısı",
+                    "Next.js ile RESTful API geliştirme ve MongoDB veritabanı yönetimi",
+                    "Firebase Auth, Firestore ve Cloud Functions entegrasyonları",
+                    "API güvenliği, hata yönetimi ve performans optimizasyonu uygulamaları",
+                    "App Store ve Play Store yayınlama ve versiyon yönetimi süreçleri",
+                    "Mobil geliştirme takım liderliği, proje planlama ve iş akışı optimizasyonu",
+                    "UI/UX tasarım ekibiyle koordineli çalışma ve prototipten üretime geçiş süreci",
+                    "Yeni özellik fikirlerinin üretilmesi, test edilmesi ve canlı ortama alınması"
+                ],
+                tags: ["Flutter", "Next.js", "Node.js", "MongoDB", "Firebase", "REST API", "BLoC", "Clean Architecture", "App Deployment"]
+            }
+                ,
+            {
+                dateRange: "Şubat 2024<br>Temmuz 2024",
+                duration: "6 ay",
+                logo: "images/anadolubank.svg",
+                title: "Junior Fullstack Developer (Uzun Dönem Stajyer)",
+                company: "Anadolubank A.Ş. • İstanbul, TR • Hibrit",
+                description: "Kurumsal bankacılık sistemlerinde backend ve mobil geliştirme süreçlerine aktif olarak katkı sağladım. C# ve Kotlin dilleriyle mevcut sistemlerin bakım, hata düzeltme ve yeni özellik geliştirme görevlerinde yer aldım. Ayrıca bankacılık operasyonlarında kullanılan servislerin güvenliği ve performans optimizasyonu üzerinde çalıştım.",
+                highlights: [
+                    "C# ile mevcut bankacılık sisteminde bug fix ve modül iyileştirmeleri gerçekleştirme",
+                    "Python Flask tabanlı mikroservisler üzerinde geliştirme ve test süreçlerine destek",
+                    "Kotlin ile Android ve Swift ile iOS ekiplerine temel düzeyde katkı sağlama",
+                    "Veritabanı işlemleri, servis entegrasyonları ve API güvenliği üzerine çalışma",
+                    "Jira ve Git kullanarak kurumsal proje yönetimi ve versiyon kontrol süreçlerine katılım",
+                    "Bankacılık sistemlerinde performans optimizasyonu ve güvenlik testleri yürütme",
+                    "Ekip içi code review süreçlerine katılım ve Clean Code prensiplerinin uygulanması"
+                ],
+                tags: ["C#", "Flask", "Kotlin", "Swift", "SQL", "REST API", "Git", "Agile"]
+            }
+                ,
+            {
+                dateRange: "Temmuz 2022<br>Eylül 2022",
+                duration: "3 ay",
+                logo: "images/oasis.png",
+                title: "Software Test Intern",
+                company: "Oasis Software Tech • Londra, UK • Remote",
+                description: "Backend, frontend ve mobil uygulama test süreçlerinde görev aldım. API, UI ve otomasyon testlerini yürütürken Flutter arayüz geliştirme çalışmalarına da katkı sağladım. Yazılımın kalite standartlarını korumak için test senaryoları oluşturdum, hata raporları hazırladım ve çözüm süreçlerine destek oldum.",
+                highlights: [
+                    "Postman ile backend API testlerinin hazırlanması ve yürütülmesi",
+                    "Cypress ile frontend E2E (end-to-end) test senaryoları geliştirme ve çalıştırma",
+                    "Appium ile mobil test otomasyonu süreçlerine destek",
+                    "Flutter ile mobil uygulamanın UI component geliştirme ve optimizasyonu",
+                    "Test senaryolarının hazırlanması, hata raporlaması ve regresyon testleri yürütülmesi",
+                    "CI/CD pipeline süreçlerine test otomasyonu entegrasyonu ve test sonuçlarının analizi",
+                    "Test coverage artırımı ve kalite güvence standartlarının uygulanması"
+                ],
+                tags: ["Postman", "Cypress", "Appium", "Flutter", "E2E Testing", "QA Automation", "CI/CD"]
+            }
+
+            ],
+
+            // Projeler
+            projects: [{
+                icon: "fas fa-solid fa-mobile-button",
+                title: "Matematik Röntgeni",
+                description: "Öğrencilerin matematik konularını öğrenme, test çözme ve yapay zekâ destekli rehberlik alabilecekleri kapsamlı bir eğitim uygulaması. Flutter ile geliştirilen mobil uygulama; kullanıcı girişi, içerik görüntüleme, test çözme, ödeme sistemi ve AI sohbet botu gibi özellikleri içermektedir. Uygulamanın backend tarafı tamamen Django ile geliştirildi; admin paneli, kullanıcı yönetimi, içerik kontrolü ve ödeme altyapısı dahil olmak üzere tüm sistem entegrasyonları geliştirildi.",
+                tags: ["Flutter", "Django", "REST API", "Firebase", "AI Chatbot", "In-App Purchase", "Admin Panel", "Payment Integration"],
+                links: [
+                    { type: "website", url: "https://matematikrontgeni.com", icon: "fas fa-external-link-alt" },
+                    { type: "playstore", url: "https://play.google.com/store/apps/details?id=com.matematikrontgeni.app", icon: "fab fa-google-play" },
+                    { type: "appstore", url: "https://apps.apple.com/tr/app/id6737230346", icon: "fab fa-apple" }
+
+                ]
+            }
+                ,
+            {
+
+                icon: "fas fa-mobile-alt",
+                title: "zero2hero Mobile",
+                description: "Figma tasarımına birebir sadık kalınarak geliştirilen, production seviyesinde Flutter mobil uygulaması. REST API entegrasyonu, BLoC pattern ve GetIt dependency injection yapısı kullanılarak backend bağlantısı ve state management yönetimi sağlandı. Uygulama Google Play Store ve App Store’da yayınlandı ve aktif olarak kullanılmaktadır.",
+                tags: ["Flutter", "BLoC", "GetIt", "REST API", "Firebase", "Clean Architecture"],
+                links: [
+                    { type: "website", url: "https://www.zero2hero.net/", icon: "fas fa-external-link-alt" },
+                    { type: "playstore", url: "https://play.google.com/store/apps/details?id=uk.co.zero2hero.mobile", icon: "fab fa-google-play" },
+                    { type: "appstore", url: "https://apps.apple.com/app/zero2hero/id1607863151", icon: "fab fa-apple" }
+                ]
+            }
+
+                ,
+            {
+                icon: "fas fa-project-diagram",
+                title: "Arty Mates API",
+                description: "Bitirme projem kapsamında geliştirilen, kullanıcıların hobileri üzerinden etkileşim kurabildiği bir sosyal medya platformunun backend yapısı. Node.js ve Apollo Server kullanarak GraphQL tabanlı bir API geliştirdim. Neo4j graph database üzerinde çok ilişkili bir veri modeli tasarlayarak kullanıcı, gönderi ve etkileşim ilişkilerini yönettim. JWT ile kimlik doğrulama ve erişim kontrolü sağladım.",
+                tags: ["Node.js", "GraphQL", "Apollo Server", "Neo4j", "JWT", "MongoDB"],
+                links: [
+                    { type: "private", url: "#", icon: "fas fa-lock" }
+                ]
+            }
+                , {
+                icon: "fas fa-coins",
+                title: "Investit (Beta)",
+                description: "Geliştirmekte olduğum kripto portföyü mobil uygulamasının beta sürümü Android cihazlar için Google Play Store’da yayında. API’siz bir yapı kullanarak kullanıcıların kripto varlıkları için hedef satış fiyatlarını hesaplayabilecekleri, tamamen lokal depolama (Hive Database) tabanlı bir mobil uygulama geliştirdim.",
+                tags: ["Flutter", "Hive", "Local Storage", "State Management"],
+                links: [
+                    { type: "github", url: "https://github.com/goldenmoon67/Investit", icon: "fab fa-github" },
+                    { type: "playstore", url: "https://play.google.com/store/apps/details?id=com.investit.beta", icon: "fab fa-google-play" }
+                ]
+            }
+                ,
+            {
+                icon: "fas fa-brain",
+                title: "Banking ML System",
+                description: "Anadolubank için geliştirilen yapay zeka destekli bankacılık sistemi. Python Flask backend ve ML modelleri.",
+                tags: ["Python", "Flask", "Machine Learning", "TensorFlow"],
+                links: [
+                    { type: "private", url: "#", icon: "fas fa-lock" }
+                ]
+            }, {
+                icon: "fas fa-futbol",
+                title: "LifeBall",
+                description: "Mobil Uygulama dersi kapsamında geliştirdiğim, kullanıcıların halısaha maçı organize edebildiği bir sosyal mobil uygulama. Flutter ile geliştirilen uygulama Android cihazlarda apk olarak aktif şekilde çalışmaktadır. Firebase Cloud Database ve Firebase Auth entegrasyonları sayesinde kullanıcı yönetimi, veri senkronizasyonu ve gerçek zamanlı veri akışı sağlanmıştır.",
+                tags: ["Flutter", "Firebase Cloud", "Firebase Auth", "Hive", "Local Database"],
+                links: [
+                    { type: "github", url: "https://github.com/goldenmoon67/LifeBall", icon: "fab fa-github" }
+                ]
+            }
+
+            ],
+
+            // Teknik Yetenekler
+            skills: [
+                {
+                    name: "Flutter / Dart",
+                    icon: "devicon-flutter-plain colored",
+                    iconColor: "var(--terminal-green)",
+                    category: "Mobile Development",
+                    experience: "5+ Yıl",
+                    description: "Flutter ile cross-platform mobil uygulama geliştirme. Clean Architecture, performans optimizasyonu, state management ve yayınlama süreçlerinde uzmanlık. Gerçek projelerde App Store ve Play Store’da yayınlanmış, ölçeklenebilir uygulamalar geliştirme deneyimi.",
+                    items: [
+                        "Clean Architecture & MVVM",
+                        "State Management (BLoC, Cubit)",
+                        "RESTful API Integration & Consumption",
+                        "Firebase Integration (Auth, Firestore, Cloud Messaging)",
+                        "Flutter Animations (Implicit, Explicit, Lottie, Rive)",
+                        "Responsive UI / Adaptive Design (MediaQuery, LayoutBuilder)",
+                        "Native Code Integration (Kotlin & Swift) via Method Channel",
+                        "Dependency Injection (GetIt)",
+                        "Factory & Singleton Patterns",
+                        "Flutter DevTools & Performance Optimization",
+                        "Secure Storage (flutter_secure_storage, encryption)",
+                        "SharedPreferences & Local Persistence",
+                        "Fastlane CI/CD Setup & Automated Deployment",
+                        "Push Notifications & Background Services",
+                        "Figma Collaboration & Pixel-perfect UI Implementation",
+                        "AI Integration (Chatbot & ML Models)",
+                        "App Store & Play Store Deployment"
+                    ]
+                }
+                , {
+                    name: "Django / Python",
+                    icon: "fab fa-python",
+                    iconColor: "var(--accent)",
+                    category: "Backend Development",
+                    experience: "2+ Yıl",
+                    description: "Django ve Django REST Framework kullanarak ölçeklenebilir, güvenli ve performanslı backend sistemleri geliştirme. MVC/MVT mimarisi, ORM optimizasyonu ve PostgreSQL veritabanı yönetimi konularında güçlü deneyim.",
+                    items: [
+                        "Django MVC / MVT Architecture",
+                        "URL Routing & View Management",
+                        "Class-Based Views (CBV) / Function-Based Views (FBV)",
+                        "Model, QuerySet ve ORM kullanımı",
+                        "Django Admin Panel Özelleştirmeleri",
+                        "Middleware ve Signals kullanımı",
+                        "PostgreSQL Veritabanı Yönetimi",
+                        "ORM Optimizasyonları (select_related, prefetch_related)",
+                        "Migration Yönetimi (makemigrations, migrate)",
+                        "Index ve Performans İyileştirmeleri",
+                        "Django REST Framework (DRF)",
+                        "Serializer, ViewSet ve Router Yapıları",
+                        "Authentication & Permissions Yönetimi",
+                        "JWT & Session Tabanlı Kimlik Doğrulama",
+                        "Deployment (Gunicorn, Nginx, Docker)",
+                        "Error Logging & Monitoring (Sentry, Logging Middleware)"
+                    ]
+                }
+                ,
+                {
+                    name: "Next.js / React",
+                    icon: "fab fa-react",
+                    iconColor: "var(--primary)",
+                    category: "Frontend & Fullstack Development",
+                    experience: "2+ Yıl",
+                    description: "Next.js ile modern, SEO dostu ve yüksek performanslı web uygulamaları geliştirme. SSR, SSG ve ISR yöntemlerini kullanarak ölçeklenebilir frontend mimarileri kurma ve Next API Routes üzerinden backend entegrasyonu sağlama deneyimi.",
+                    items: [
+                        "Server-Side Rendering (SSR), Static Site Generation (SSG) ve Incremental Static Regeneration (ISR)",
+                        "Next.js API Routes ile backend geliştirme (Next API backend)",
+                        "Dynamic Routing, Middleware ve Route Handlers kullanımı",
+                        "App Router & Pages Router yapılarında deneyim",
+                        "React Server Components ile performans optimizasyonu",
+                        "State Management (Context API, Zustand, Redux Toolkit)",
+                        "Authentication & Authorization (JWT, NextAuth, OAuth)",
+                        "Component-based architecture ve reusable UI yapıları",
+                        "Form Management (React Hook Form, Zod Validation)",
+                        "Responsive UI & TailwindCSS entegrasyonu",
+                        "API entegrasyonları (REST & GraphQL)",
+                        "Deployment (Vercel, Docker, Nginx)"
+                    ]
+                }
+                ,
+                {
+                    name: "Express.js / Node.js",
+                    icon: "fab fa-node-js",
+                    iconColor: "var(--success)",
+                    category: "Backend Development",
+                    experience: "2+ Yıl",
+                    description: "Node.js ve Express.js kullanarak RESTful API’ler, middleware tabanlı backend mimarileri ve güvenli kimlik doğrulama sistemleri geliştirme deneyimi. Performans, ölçeklenebilirlik ve modüler yapı odaklı backend çözümleri üretme.",
+                    items: [
+                        "RESTful API Geliştirme ve Entegrasyon",
+                        "Router & Controller Katmanlı Mimari",
+                        "Custom Middleware Geliştirme ve Yönetimi",
+                        "Error Handling Middleware & Global Exception Management",
+                        "Authentication & Authorization (JWT, OAuth 2.0, Passport.js)",
+                        "Request Validation (Joi, Zod)",
+                        "Environment Management (dotenv, config)",
+                        "Database Entegrasyonu (MongoDB, Mongoose, Prisma)",
+                        "Async/Await ve Promise Tabanlı İş Akışları",
+                        "API Rate Limiting & CORS Yönetimi",
+                        "Unit & Integration Testing (Jest, Supertest)",
+                        "Production Deployment (PM2, Docker, Nginx)"
+                    ]
+                }
+                ,
+                {
+                    name: "Database",
+                    icon: "fas fa-database",
+                    iconColor: "var(--terminal-green)",
+                    category: "Data Management",
+                    experience: "2+ Yıl",
+                    description: "İlişkisel ve NoSQL veritabanı yönetimi. Graph database deneyimi.",
+                    items: [
+                        "Firebase Firestore",
+                        "PostgreSQL",
+                        "MongoDB",
+                        "Neo4j Graph Database",
+                        "Redis Caching",
+                        "Database Design & Optimization",
+                        "Query Optimization"
+                    ]
+                },
+                {
+                    name: "NestJS",
+                    icon: "fas fa-cube",
+                    iconColor: "var(--warning)",
+                    category: "Backend Development",
+                    experience: "1.5+ Yıl",
+                    description: "NestJS ile modüler, ölçeklenebilir ve tip güvenli backend servisleri geliştirme. Dependency Injection yapısı, güçlü tip desteği ve gerçek zamanlı iletişim yetenekleriyle kurumsal mimarilere uygun RESTful ve WebSocket tabanlı uygulamalar oluşturma.",
+                    items: [
+                        "Modular Architecture & Layered Design",
+                        "Dependency Injection (DI) ve Service Management",
+                        "DTO (Data Transfer Object) yapılarıyla veri doğrulama",
+                        "Pipes, Guards ve Interceptors ile request-response yönetimi",
+                        "Global Exception Filters ve hata yönetimi",
+                        "WebSocket / Gateway ile gerçek zamanlı iletişim (Real-time Communication)",
+                        "Authentication & Authorization (JWT, Passport Strategy)",
+                        "TypeORM & Prisma Entegrasyonu ile Database Yönetimi",
+                        "Swagger Entegrasyonu ve API Dokümantasyonu",
+                        "Caching (Redis) ve performans optimizasyonu",
+                        "Testing (Jest, Supertest) ve Unit Test yapıları",
+                        "Docker ve CI/CD pipeline entegrasyonu"
+                    ]
+                }
+                ,
+                {
+                    name: "DevOps & Tools",
+                    icon: "fas fa-tools",
+                    iconColor: "var(--accent)",
+                    category: "Development Tools",
+                    experience: "6+ Yıl",
+                    description: "Geliştirme süreçleri, versiyon kontrol ve deployment araçları.",
+                    items: [
+                        "Git & GitHub",
+                        "Docker Containerization",
+                        "CI/CD Pipelines",
+                        "Postman API Testing",
+                        "Cypress E2E Testing",
+                        "Firebase Services",
+                        "Agile/Scrum Methodology"
+                    ]
+                }
+            ],
+
+            // İletişim Bilgileri
+            contact: {
+                email: "abdulmirac@gmail.com",
+                location: "Istanbul, Turkey - Zonguldak, Türkiye",
+                remoteAvailable: true,
+                social: [
+                    { name: "GitHub", icon: "fab fa-github", url: "https://github.com/goldenmoon67" },
+                    { name: "LinkedIn", icon: "fab fa-linkedin", url: "https://www.linkedin.com/in/abdulmiracaltinay" },
+                    { name: "Twitter", icon: "fab fa-twitter", url: "https://twitter.com/miracaltinay" },
+                    { name: "Email", icon: "fas fa-envelope", url: "mailto:abdulmirac@gmail.com" },
+                    { name: "Medium", icon: "fab fa-medium", url: "https://medium.com/@abdulmirac" },
+                    { name: "Stack Overflow", icon: "fab fa-stack-overflow", url: "https://stackoverflow.com/users/18397552/mirac-altinay" }
+                ]
+            }
+        };
+
+        // ============================================
+        // RENDER FONKSİYONLARI
+        // ============================================
+        function renderHero() {
+            const heroContainer = document.querySelector('#hero .terminal-content');
+
+            heroContainer.innerHTML = `
+        <div class="terminal-line">
+            <span class="prompt">mirac@dev:~$</span>
+            <span class="command">cat about.txt</span>
+        </div>
+        <div class="terminal-line">
+            <h1 class="hero-title">${portfolioData.hero.name}</h1>
+        </div>
+        <div class="terminal-line">
+            <p class="hero-subtitle">${portfolioData.hero.title}</p>
+        </div>
+        <div class="terminal-line">
+            <p class="hero-description">${portfolioData.hero.description}</p>
+        </div>
+        <div class="terminal-line">
+            <div class="cta-section">
+                <a href="#experience" class="btn">view_experience()</a>
+                <a href="#contact" class="btn btn-secondary">contact_me()</a>
+                <a href="docs/cv.pdf" class="btn btn-accent" download>download_cv()</a>
             </div>
-            <h3>graphQL API
-            </h3>
-            <p>graphQL API geliştirme</p>
-            <ul>
-                <li>
-                   Apollo Server
-                </li>
-                <li>
-                  Queries and Mutations
-                </li> 
-                
-            </ul>
         </div>
-        <div class="skill-card">
-            <div class="skill-icon">
-                <img src="images/docker.svg" alt="docker">
-            </div>
-            <h3>Docker Uygulamalrı
-            </h3>
-            <p>Docker kullanarak uygulamalar geliştirme</p>
-            <ul>
-                <li>
-                   Docker Compose
-                </li>
-                <li>
-                    dockerize işlemleri
-                </li> 
-                <li>
-                    volumes işlemleri
-                </li> 
-                <li>
-                    network işlemleri
-                </li> 
-                
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>If you'd like to get in touch, feel free to reach out via email or connect with me on social media.</p>
-    <div class="contact-info">
-        <p>Email: <a href="abdulmirac@gmail.com">abdulmirac@gmail.com</a></p>
-        <ul class="social-icons-tab">
-            <li><a href="https://github.com/goldenmoon67" target="_blank" class="social-icon">
-                <i class="fab fa-github"></i> GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/abdulmiracaltinay/" target="_blank" class="social-icon">
-                <i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="https://medium.com/@abdulmirac" target="_blank" class="social-icon">
-                <i class="fab fa-medium"></i> Medium</a></li>
-                <li><a href="https://stackoverflow.com/users/18397552/mirac-altinay" target="_blank" class="social-icon">
-                    <i class="fab fa-stack-overflow"></i> Stackoverflow</a></li>
-            <li><a href="https://instagram.com/altinaymirac" target="_blank" class="social-icon">
-                <i class="fab fa-instagram"></i> Instagram</a></li>
-            <li><a href="https://wa.me/+905372372995" target="_blank" class="social-icon">
-                <i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-        </ul>
-        
-    </div>
-</section>
-
-<footer>
-    <p class="footer-copyright">&copy; 2024 Mirac Altınay. Tüm hakları saklıdır.</p>
-    <p class="footer-update"> Son güncelleme tarihi 27.07.2024</p>
-
-</footer>
+    `;
+        }
 
 
-<script src="script.js"></script>
+        function renderExperiences() {
+            const container = document.querySelector('.timeline');
+            container.innerHTML = portfolioData.experiences.map(exp => `
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>${exp.dateRange}</span>
+                        <span class="duration">${exp.duration}</span>
+                    </div>
+                    <div class="timeline-content">
+                        <img src="${exp.logo}" alt="${exp.company}" class="company-logo">
+                        <h3 class="job-title">${exp.title}</h3>
+                        <p class="company-name">${exp.company}</p>
+                        <p>${exp.description}</p>
+                        <ul>
+                            ${exp.highlights.map(h => `<li>${h}</li>`).join('')}
+                        </ul>
+                        <div class="tech-tags">
+                            ${exp.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
 
+        function renderProjects() {
+            const container = document.querySelector('.projects-grid');
+            container.innerHTML = portfolioData.projects.map(project => `
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="${project.icon}"></i>
+                        </div>
+                        <div class="project-links-header">
+                            ${project.links.map(link => `
+                                <a href="${link.url}" target="_blank" class="project-link" title="${link.type}">
+                                    <i class="${link.icon}"></i>
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <div class="tech-tags">
+                            ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderSkills() {
+            const container = document.querySelector('.skills-grid');
+            container.innerHTML = portfolioData.skills.map(skill => `
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-info">
+                            <h3>
+                                <i class="${skill.icon}" style="color: ${skill.iconColor}; margin-right: 0.5rem;"></i>
+                                ${skill.name}
+                            </h3>
+                            <span class="skill-category">${skill.category}</span>
+                        </div>
+                        <span class="skill-experience">${skill.experience}</span>
+                    </div>
+                    <p class="skill-description">${skill.description}</p>
+                    <ul class="skill-items">
+                        ${skill.items.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        function renderContact() {
+            const socialGrid = document.querySelector('.social-grid');
+            socialGrid.innerHTML = portfolioData.contact.social.map(social => `
+                <a href="${social.url}" target="_blank" class="social-item">
+                    <i class="${social.icon}"></i>
+                    <span>${social.name}</span>
+                </a>
+            `).join('');
+        }
+
+        // ============================================
+        // SAYFA YÜKLENDİĞİNDE ÇALIŞTIR
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHero();
+            renderExperiences();
+            renderProjects();
+            renderSkills();
+            renderContact();
+        });
+
+        // ============================================
+        // DİĞER FONKSİYONLAR
+        // ============================================
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('click', function (e) {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) return; // Link değilse çık
+
+            const targetId = anchor.getAttribute('href');
+            const target = document.querySelector(targetId);
+
+            if (target) {
+                e.preventDefault(); // varsayılan hash davranışını engelle
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // URL'e # eklenmesini engelle
+                history.replaceState(null, null, ' ');
+            }
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Matrix rain effect (simplified)
+        function createMatrixRain() {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('code-rain');
+            document.querySelector('.bg-animation').appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const chars = '01';
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = Array(Math.floor(columns)).fill(1);
+
+            function draw() {
+                ctx.fillStyle = 'rgba(6, 8, 21, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = 'rgba(0, 255, 65, 0.3)';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(draw, 50);
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        createMatrixRain();
+    </script>
 </body>
+
 </html>
